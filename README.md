@@ -74,11 +74,11 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
   <tr>
     <td align="center">
       <img src="images/rotation_01%20trajectory.png" height="350""><br>
-      <b> `rotation_01` </b>
+      <b>rotation_01</b>
     </td>
     <td align="center">
       <img src="images/street_04%20trajectory.png" height="350"><br>
-      <b> `street_04` </b>
+      <b>street_04</b>
     </td>
   </tr>
 </table>
