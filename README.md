@@ -37,3 +37,5 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 | Train | `gate_01`, `rotation_02`, `street_01`, `street_02`, `street_03`, `street_05`, `street_06`, `street_08`, `street_09`, `street_10` |
 | Validation | `walk_01` |
 | Test | `rotation_01`, `street_04` |
+
+*Note: The sequences were split by route rather than by individual frames to reduce direct spatial overlap between training and evaluation data and to evaluate generalization on unseen trajectories.*
