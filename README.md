@@ -126,3 +126,12 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 
 - **Real-Time Autonomous Localization and Navigation**  
   Extending the current offline localization pipeline to process streaming LiDAR data in real time, and further integrating IMU sensor fusion toward real-time autonomous navigation on **NVIDIA Jetson Orin NX** within the **NTUST campus environment**.
+  
+## Acknowledgment and References
+
+This project uses the [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) dataset for training and evaluation.
+
+- J. Yin et al., "M2DGR: A Multi-sensor and Multi-scenario SLAM Dataset for Ground Robots," *IEEE Robotics and Automation Letters*, 2021.  
+  [M2DGR GitHub Repository](https://github.com/SJTU-ViSYS/M2DGR)
+
+Additional references related to the underlying localization method will be added when they become publicly available.
