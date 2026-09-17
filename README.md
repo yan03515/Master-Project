@@ -73,11 +73,11 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 <table>
   <tr>
     <td align="center">
-      <img src="images/rotation_01%20trajectory.png" width="100%"><br>
+      <img src="images/rotation_01%20trajectory.png" height="350""><br>
       <b>Overall Pipeline</b>
     </td>
     <td align="center">
-      <img src="images/street_04%20trajectory.png" width="100%"><br>
+      <img src="images/street_04%20trajectory.png" height="350"><br>
       <b>Pose Generation Pipeline</b>
     </td>
   </tr>
