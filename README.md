@@ -108,3 +108,22 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
   In `rotation_01`, localization becomes less stable under large orientation changes. BEV scenes with similar geometric structures can produce high feature similarity even when their orientations differ, leading to incorrect anchor retrieval and degraded pose estimation.
 - **Long-distance retrieval outliers**  
   In `street_04`, most frames achieve accurate localization, but a small number of queries are matched to geometrically similar anchors located far from the correct position. These outliers significantly increase the overall translation RMSE despite the low median localization error.
+
+## Current Work and Future Directions
+
+### Current Work
+
+- **Rotation Robustness Improvement**  
+  Improving retrieval robustness under large orientation changes to reduce orientation ambiguity and incorrect anchor matching.
+
+- **Retrieval Reliability**  
+  Investigating methods to reduce long-distance wrong-anchor retrievals and improve localization stability in geometrically similar environments.
+
+### Future Directions
+
+- **Online Gating and Real-Time Localization**  
+  Extending the current offline localization pipeline toward online processing of streaming LiDAR data and real-time localization on the autonomous vehicle platform.
+
+- **Uncertainty-Driven Adaptive Anchor Density**  
+  Exploring adaptive anchor spacing based on localization uncertainty, with denser anchors in difficult regions and fewer anchors in reliable regions to balance localization robustness and map size.
+
