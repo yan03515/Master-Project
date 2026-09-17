@@ -66,3 +66,5 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 | Refined CEP50 | 0.683 m | 0.198 m |
 | Translation RMSE | 1.994 m | 3.493 m |
 | Rotation RMSE | 12.97° | 2.08° |
+
+### GT vs Predicted trajectory
