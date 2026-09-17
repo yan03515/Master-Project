@@ -14,7 +14,7 @@ The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View 
 - `bev_manifest.csv` : Records each generated BEV frame together with its timestamp and global pose `(x, y, yaw)`.
 - `anchors.csv` : Stores the selected reference BEV frames (anchors) and their corresponding global poses.
 - `pairs.csv` : Defines query–anchor training pairs, including place-recognition labels, relative pose offsets `(dx, dy, dyaw)`, and a validity mask for pose refinement.
-- Shared BEV Feature Encoder : A lightweight CNN-based encoder shared by query and anchor BEVs. It converts each BEV image into a compact 256-dimensional feature descriptor used for similarity matching. The original architecture uses four convolutional blocks followed by global average pooling and descriptor normalization.
+- Shared BEV Feature Encoder : A lightweight CNN-based encoder that converts query and anchor BEVs into compact feature descriptors for similarity matching.
 - Retrieval — Compares the query descriptor with the anchor database using feature similarity and selects the most relevant anchor as the coarse location estimate.
 - Refinement — Uses the query BEV and retrieved anchor BEV to estimate the local relative pose correction `(dx, dy, dyaw)` and its uncertainty, improving the coarse retrieval result into a more precise pose estimate.
 
