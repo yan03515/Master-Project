@@ -8,14 +8,15 @@ Reproduction and extension of a LiDAR-based place recognition and localization m
 <p align="center">
   <img src="images/Overall%20Pipeline.drawio.png" width="900">
 </p>
+
 The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View (BEV) representations for model training and localization. During training, a shared feature encoder learns BEV representations for place retrieval, while a refinement module estimates the relative pose between a query and its matched anchor. The trained model is then used to retrieve the most relevant anchor and estimate the vehicle pose during localization.
 
-- `bev_manifest.csv` : Records each generated BEV frame together with its timestamp and global pose (x, y, yaw).
+- `bev_manifest.csv` : Records each generated BEV frame together with its timestamp and global pose `(x, y, yaw)`.
 - `anchors.csv` : Stores the selected reference BEV frames (anchors) and their corresponding global poses.
-- `pairs.csv` : Defines query–anchor training pairs, including place-recognition labels, relative pose offsets (dx, dy, dyaw), and a validity mask for pose refinement.
+- `pairs.csv` : Defines query–anchor training pairs, including place-recognition labels, relative pose offsets `(dx, dy, dyaw)`, and a validity mask for pose refinement.
 - Shared BEV Feature Encoder : A lightweight CNN-based encoder shared by query and anchor BEVs. It converts each BEV image into a compact 256-dimensional feature descriptor used for similarity matching. The original architecture uses four convolutional blocks followed by global average pooling and descriptor normalization.
 - Retrieval — Compares the query descriptor with the anchor database using feature similarity and selects the most relevant anchor as the coarse location estimate.
-- Refinement — Uses the query BEV and retrieved anchor BEV to estimate the local relative pose correction (dx, dy, dyaw) and its uncertainty, improving the coarse retrieval result into a more precise pose estimate.
+- Refinement — Uses the query BEV and retrieved anchor BEV to estimate the local relative pose correction `(dx, dy, dyaw)` and its uncertainty, improving the coarse retrieval result into a more precise pose estimate.
 
 ### Pose Generation Pipeline
 
@@ -23,7 +24,7 @@ The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View 
   <img src="images/Pose%20Generation%20Pipeline.png" width="900">
 </p>
 
-The raw ground-truth poses are transformed from ECEF coordinates into a shared ENU coordinate frame and temporally aligned with the LiDAR timestamps. Position is interpolated linearly, while orientation is interpolated using quaternion SLERP before extracting the final yaw angle. The resulting `poses.csv` contains (timestamp, x, y, yaw) for each LiDAR frame.
+The raw ground-truth poses are transformed from ECEF coordinates into a shared ENU coordinate frame and temporally aligned with the LiDAR timestamps. Position is interpolated linearly, while orientation is interpolated using quaternion SLERP before extracting the final yaw angle. The resulting `poses.csv` contains `(timestamp, x, y, yaw)` for each LiDAR frame.
 
 
 `poses.csv` is required to associate each LiDAR frame with its global position and orientation. The LiDAR point clouds and `poses.csv` are then processed to generate the BEV images, `bev_manifest.csv`, `anchors.csv`, and `pairs.csv` used in the subsequent training and localization pipeline.
@@ -39,3 +40,12 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 | Test | `rotation_01`, `street_04` |
 
 *Note: The sequences were split by route rather than by individual frames to reduce direct spatial overlap between training and evaluation data and to evaluate generalization on unseen trajectories.*
+
+### Implementation Changes
+
+- **Reconstructed `poses.csv` for M2DGR**  
+  Converted the M2DGR ground-truth positions from ECEF to a shared ENU coordinate system and aligned them with LiDAR timestamps. Position was interpolated linearly, while orientation was interpolated using quaternion SLERP to generate `(timestamp, x, y, yaw)` for each LiDAR frame.
+- **Added mask handling for pose refinement**  
+  Samples with invalid refinement conditions are still retained for place-recognition training, while being excluded from the pose-refinement loss. This allows retrieval learning to use more data without introducing unreliable pose-regression targets.
+- **Improved InfoNCE negative-sample handling**  
+  Since all M2DGR sequences are represented in the same global ENU coordinate system, frames from different sequences may correspond to nearby or overlapping locations. Spatially close cross-sequence samples are therefore excluded from the negative set to reduce false negatives during retrieval training.
