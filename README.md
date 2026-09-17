@@ -32,6 +32,7 @@ The raw ground-truth poses are transformed from ECEF coordinates into a shared E
 ## Dataset Adaptation and Implementation Changes
 
 ### Dataset
+
 This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary experimental dataset. M2DGR includes a variety of outdoor environments, such as campus roads and urban streets, and provides LiDAR data with corresponding ground-truth trajectories for localization training and evaluation. In addition, M2DGR uses a **Velodyne VLP-32C LiDAR**, the same LiDAR model used on our laboratory autonomous vehicle platform. Therefore, this dataset better represents the conditions expected for future deployment and testing on the **NTUST campus**.
 | Split | Sequences |
 | --- | --- |
@@ -68,3 +69,16 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 | Rotation RMSE | 12.97° | 2.08° |
 
 ### GT vs Predicted trajectory
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="images/rotation_01%20trajectory.png" width="100%"><br>
+      <b>Overall Pipeline</b>
+    </td>
+    <td align="center">
+      <img src="images/street_04%20trajectory.png" width="100%"><br>
+      <b>Pose Generation Pipeline</b>
+    </td>
+  </tr>
+</table>
