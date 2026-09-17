@@ -119,11 +119,10 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 - **Retrieval Reliability**  
   Investigating methods to reduce long-distance wrong-anchor retrievals and improve localization stability in geometrically similar environments.
 
-### Future Directions
-
-- **Online Gating and Real-Time Localization**  
-  Extending the current offline localization pipeline toward online processing of streaming LiDAR data and real-time localization on the autonomous vehicle platform.
-
 - **Uncertainty-Driven Adaptive Anchor Density**  
   Exploring adaptive anchor spacing based on localization uncertainty, with denser anchors in difficult regions and fewer anchors in reliable regions to balance localization robustness and map size.
 
+### Future Directions
+
+- **Real-Time Autonomous Localization and Navigation**  
+  Extending the current offline localization pipeline to process streaming LiDAR data in real time, and further integrating IMU sensor fusion toward real-time autonomous navigation on **NVIDIA Jetson Orin NX** within the **NTUST campus environment**.
