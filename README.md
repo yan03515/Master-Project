@@ -34,7 +34,7 @@ The raw ground-truth poses are transformed from ECEF coordinates into a shared E
 ### Dataset
 This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary experimental dataset. M2DGR includes a variety of outdoor environments, such as campus roads and urban streets, and provides LiDAR data with corresponding ground-truth trajectories for localization training and evaluation. In addition, M2DGR uses a **Velodyne VLP-32C LiDAR**, the same LiDAR model used on our laboratory autonomous vehicle platform. Therefore, this dataset better represents the conditions expected for future deployment and testing on the **NTUST campus**.
 | Split | Sequences |
-| --- | --- |
+| ---: | --- |
 | Train | `gate_01`, `rotation_02`, `street_01`, `street_02`, `street_03`, `street_05`, `street_06`, `street_08`, `street_09`, `street_10` |
 | Validation | `walk_01` |
 | Test | `rotation_01`, `street_04` |
@@ -52,3 +52,17 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 
 ## Results and Observed Issues
 
+### Test Results
+
+| Metric | `rotation_01` | `street_04` |
+| --- | ---: | ---: |
+| R@1 @ 2 m | 80.38% | 66.38% |
+| R@1 @ 5 m | 95.74% | 93.81% |
+| R@1 @ 10 m | 99.78% | 98.04% |
+| R@5 @ 2 m | 97.37% | 78.00% |
+| R@5 @ 5 m | 99.60% | 99.73% |
+| R@5 @ 10 m | 100% | 100% |
+| Retrieval CEP50 | 0.773 m | 1.487 m |
+| Refined CEP50 | 0.683 m | 0.198 m |
+| Translation RMSE | 1.994 m | 3.493 m |
+| Rotation RMSE | 12.97° | 2.08° |
