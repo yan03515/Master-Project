@@ -49,3 +49,6 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
   Samples with invalid refinement conditions are still retained for place-recognition training, while being excluded from the pose-refinement loss. This allows retrieval learning to use more data without introducing unreliable pose-regression targets.
 - **Improved InfoNCE negative-sample handling**  
   Since all M2DGR sequences are represented in the same global ENU coordinate system, frames from different sequences may correspond to nearby or overlapping locations. Spatially close cross-sequence samples are therefore excluded from the negative set to reduce false negatives during retrieval training.
+
+## Results and Observed Issues
+
