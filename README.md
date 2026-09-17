@@ -7,7 +7,7 @@ Reproduction and extension of a LiDAR-based place recognition and localization m
 <p align="center">
   <img src="images/Overall%20Pipeline.drawio.png" width="900">
 </p>
-The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View (BEV) representations for model training and localization. During training, a shared feature encoder learns BEV representations for place retrieval, while a refinement module estimates the relative pose between a query and its matched anchor. The trained model is then used to retrieve the most relevant anchor and estimate the vehicle pose during localization.
+The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View (BEV) representations for model training and localization. During training, a shared feature encoder learns BEV representations for place retrieval, while a refinement module estimates the relative pose between a query and its matched anchor. The trained model is then used to retrieve the most relevant anchor and estimate the vehicle pose during localization.  
 
 - `bev_manifest.csv` : Records each generated BEV frame together with its timestamp and global pose (x, y, yaw).
 - `anchors.csv` : Stores the selected reference BEV frames (anchors) and their corresponding global poses.
