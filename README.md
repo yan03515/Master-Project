@@ -82,3 +82,24 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
     </td>
   </tr>
 </table>
+
+### GOOD / BAD retrieval example
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="images/image1.png" height="300">
+    </td>
+    <td align="center">
+      <img src="images/image2.png" height="300">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="images/image3.png" height="300">
+    </td>
+    <td align="center">
+      <img src="images/image4.png" height="300">
+    </td>
+  </tr>
+</table>
