@@ -47,9 +47,9 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 - **Reconstructed `poses.csv` for M2DGR**  
   Converted the M2DGR ground-truth positions from ECEF to a shared ENU coordinate system and aligned them with LiDAR timestamps. Position was interpolated linearly, while orientation was interpolated using quaternion SLERP to generate `(timestamp, x, y, yaw)` for each LiDAR frame.
 - **Added mask handling for pose refinement**  
-  Samples with invalid refinement conditions are still retained for place-recognition training, while being excluded from the pose-refinement loss. This allows retrieval learning to use more data without introducing unreliable pose-regression targets.
+  Samples outside the valid refinement range are still retained for place-recognition training, while being excluded from the pose-refinement loss. This allows retrieval learning to use more data without introducing unreliable pose-regression targets.
 - **Improved InfoNCE negative-sample handling**  
-  Since all M2DGR sequences are represented in the same global ENU coordinate system, frames from different sequences may correspond to nearby or overlapping locations. Spatially close cross-sequence samples are therefore excluded from the negative set to reduce false negatives during retrieval training.
+  Since all selected M2DGR sequences were transformed into the same global ENU coordinate system in this project, frames from different sequences may correspond to nearby or overlapping locations. Spatially close cross-sequence samples are therefore excluded from the negative set to reduce false negatives during retrieval training.
 
 ## Results and Observed Issues
 
@@ -73,7 +73,7 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 <table>
   <tr>
     <td align="center">
-      <img src="images/rotation_01%20trajectory.png" height="400""><br>
+      <img src="images/rotation_01%20trajectory.png" height="400"><br>
     </td>
     <td align="center">
       <img src="images/street_04%20trajectory.png" height="400"><br>
@@ -105,7 +105,7 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 ### Observed Issues
 
 - **Rotation and orientation ambiguity**  
-  In `rotation_01`, localization becomes less stable under large orientation changes. BEV scenes with similar geometric structures can produce high feature similarity even when their orientations differ, leading to incorrect anchor retrieval and degraded pose estimation.
+  In `rotation_01`, localization becomes less stable under large orientation changes. BEV scenes with similar geometric structures may produce high feature similarity even when their orientations differ, leading to incorrect anchor retrieval and degraded pose estimation.
 - **Long-distance retrieval outliers**  
   In `street_04`, most frames achieve accurate localization, but a small number of queries are matched to geometrically similar anchors located far from the correct position. These outliers significantly increase the overall translation RMSE despite the low median localization error.
 
