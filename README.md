@@ -104,7 +104,7 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 
 ### Observed Issues
 
-- Rotation and orientation ambiguity  
+- **Rotation and orientation ambiguity**  
   In `rotation_01`, localization becomes less stable under large orientation changes. BEV scenes with similar geometric structures can produce high feature similarity even when their orientations differ, leading to incorrect anchor retrieval and degraded pose estimation.
-- Long-distance retrieval outliers  
+- **Long-distance retrieval outliers**  
   In `street_04`, most frames achieve accurate localization, but a small number of queries are matched to geometrically similar anchors located far from the correct position. These outliers significantly increase the overall translation RMSE despite the low median localization error.
