@@ -9,7 +9,6 @@ Reproduction and extension of a LiDAR-based place recognition and localization m
 </p>
 The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View (BEV) representations for model training and localization. During training, a shared feature encoder learns BEV representations for place retrieval, while a refinement module estimates the relative pose between a query and its matched anchor. The trained model is then used to retrieve the most relevant anchor and estimate the vehicle pose during localization.
 
-
 - `bev_manifest.csv` : Records each generated BEV frame together with its timestamp and global pose (x, y, yaw).
 - `anchors.csv` : Stores the selected reference BEV frames (anchors) and their corresponding global poses.
 - `pairs.csv` : Defines query–anchor training pairs, including place-recognition labels, relative pose offsets (dx, dy, dyaw), and a validity mask for pose refinement.
@@ -22,3 +21,5 @@ The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View 
 <p align="center">
   <img src="images/Pose%20Generation%20Pipeline.png" width="900">
 </p>
+The raw ground-truth poses are transformed from ECEF coordinates into a shared ENU coordinate frame and temporally aligned with the LiDAR timestamps. Position is interpolated linearly, while orientation is interpolated using quaternion SLERP before extracting the final yaw angle. The resulting poses.csv contains (timestamp, x, y, yaw) for each LiDAR frame.
+`poses.csv` is required to associate each LiDAR frame with its global position and orientation. The LiDAR point clouds and poses.csv are then processed to generate the BEV images, bev_manifest.csv, anchors.csv, and pairs.csv used in the subsequent training and localization pipeline.
