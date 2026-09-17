@@ -23,4 +23,6 @@ The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View 
 </p>
 
 The raw ground-truth poses are transformed from ECEF coordinates into a shared ENU coordinate frame and temporally aligned with the LiDAR timestamps. Position is interpolated linearly, while orientation is interpolated using quaternion SLERP before extracting the final yaw angle. The resulting `poses.csv` contains (timestamp, x, y, yaw) for each LiDAR frame.
+
+
 `poses.csv` is required to associate each LiDAR frame with its global position and orientation. The LiDAR point clouds and `poses.csv` are then processed to generate the BEV images, `bev_manifest.csv`, `anchors.csv`, and `pairs.csv` used in the subsequent training and localization pipeline.
