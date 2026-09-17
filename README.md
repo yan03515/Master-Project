@@ -2,6 +2,7 @@
 Reproduction and extension of a LiDAR-based place recognition and localization method for autonomous vehicles. This README provides a concise overview of my Master's project, including the system pipeline, dataset adaptation, implementation improvements, experimental results, and ongoing work. It is intended to help readers quickly understand the scope, methodology, and progress of the project without going into all implementation details.
 
 ## System Pipeline
+
 ### Overall Pipeline
 
 <p align="center">
@@ -28,5 +29,6 @@ The raw ground-truth poses are transformed from ECEF coordinates into a shared E
 `poses.csv` is required to associate each LiDAR frame with its global position and orientation. The LiDAR point clouds and `poses.csv` are then processed to generate the BEV images, `bev_manifest.csv`, `anchors.csv`, and `pairs.csv` used in the subsequent training and localization pipeline.
 
 ##Dataset Adaptation and Implementation Changes
+
 ###Dataset
 This project uses **M2DGR** as the primary experimental dataset. M2DGR includes a variety of outdoor environments, such as campus roads and urban streets, and provides LiDAR data with corresponding ground-truth trajectories for localization training and evaluation. In addition, M2DGR uses a **Velodyne VLP-32C LiDAR**, the same LiDAR model used on our laboratory autonomous vehicle platform. Therefore, this dataset better represents the conditions expected for future deployment and testing on the **NTUST campus**.
