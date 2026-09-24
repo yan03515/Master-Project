@@ -1,6 +1,6 @@
 # Master Project
 ## Summary
-Reproduction and extension of a LiDAR-based place recognition and localization method for autonomous vehicles. This README provides a concise overview of my Master's project, including the system pipeline, dataset adaptation, implementation improvements, experimental results, and ongoing work. It is intended to help readers quickly understand the scope, methodology, and progress of the project without going into all implementation details.
+Reproduction and extension of a **LiDAR-based place recognition and localization** method for autonomous vehicles. This README provides a concise overview of my Master's project, including the system pipeline, dataset adaptation, implementation improvements, experimental results, and ongoing work. It is intended to help readers quickly understand the scope, methodology, and progress of the project without going into all implementation details.
 
 ## System Pipeline
 
@@ -15,9 +15,9 @@ The pipeline converts LiDAR point clouds and vehicle poses into Bird's-Eye-View 
 - `bev_manifest.csv` : Records each generated BEV frame together with its timestamp and global pose `(x, y, yaw)`.
 - `anchors.csv` : Stores the selected reference BEV frames (anchors) and their corresponding global poses.
 - `pairs.csv` : Defines query–anchor training pairs, including place-recognition labels, relative pose offsets `(dx, dy, dyaw)`, and a validity mask for pose refinement.
-- Shared BEV Feature Encoder : A lightweight CNN-based encoder that converts query and anchor BEVs into compact feature descriptors for similarity matching.
-- Retrieval — Compares the query descriptor with the anchor database using feature similarity and selects the most relevant anchor as the coarse location estimate.
-- Refinement — Uses the query BEV and retrieved anchor BEV to estimate the local relative pose correction `(dx, dy, dyaw)` and its uncertainty, improving the coarse retrieval result into a more precise pose estimate.
+- **Shared BEV Feature Encoder** : A lightweight CNN-based encoder that converts query and anchor BEVs into compact feature descriptors for similarity matching.
+- **Retrieval** — Compares the query descriptor with the anchor database using feature similarity and selects the most relevant anchor as the coarse location estimate.
+- **Refinement** — Uses the query BEV and retrieved anchor BEV to estimate the local relative pose correction `(dx, dy, dyaw)` and its uncertainty, improving the coarse retrieval result into a more precise pose estimate.
 
 ### Pose Generation Pipeline
 
