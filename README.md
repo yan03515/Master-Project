@@ -41,7 +41,7 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 | Validation | `walk_01` |
 | Test | `rotation_01`, `street_04` |
 
-*Note: The sequences were split by route rather than by individual frames to reduce direct spatial overlap between training and evaluation data and to evaluate generalization on unseen trajectories.*
+*Note: The sequences were split by route rather than by individual frames to reduce temporal data leakage and evaluate generalization across different trajectories. Spatial overlap between sequences may still exist.*
 
 ### Implementation Changes
 
@@ -125,8 +125,11 @@ This project uses [M2DGR](https://github.com/SJTU-ViSYS/M2DGR) as the primary ex
 
 ### Future Directions
 
-- **Real-Time Autonomous Localization and Navigation**  
-  Extending the current offline localization pipeline to process streaming LiDAR data in real time, and further integrating IMU sensor fusion toward real-time autonomous navigation on **NVIDIA Jetson Orin NX** within the **NTUST campus environment**.The vehicle's mechanical structure, PC-side control program, and FPGA-based motor control system are documented in the [Autonomous-Vehicle](https://github.com/yan03515/Autonomous-Vehicle/tree/main) repository.
+- **Real-Time Autonomous Localization and Navigation**
+
+  Extending the current offline localization pipeline to process streaming LiDAR data in real time, and further integrating IMU sensor fusion toward real-time autonomous navigation on **NVIDIA Jetson Orin NX** within the **NTUST campus environment**.
+
+  The system will be deployed and validated on our laboratory autonomous vehicle platform for real-world testing. The vehicle's mechanical structure, PC-side control program, and FPGA-based motor control system are documented in the [Autonomous-Vehicle](https://github.com/yan03515/Autonomous-Vehicle/tree/main) repository.
   
 ## Acknowledgment and References
 
